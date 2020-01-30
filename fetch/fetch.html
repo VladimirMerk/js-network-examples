@@ -1,0 +1,82 @@
+<html>
+    <header>
+        <style>
+            #result {
+                display: block;
+                width: 320px;
+                margin: 0 auto;
+                font-size: 24px;
+            }
+            #result[data-status="loading"]:after {
+                content: "";
+                animation: blink 1s infinite linear;
+            }
+            .user-card {
+                font-size: 14px;
+                display: flex;
+                margin-bottom: 10px;
+            }
+            .user-card .avatar {
+            }
+            .user-card .avatar img {
+                width: 80px;
+                height: auto;
+            }
+            .user-card .info {
+                
+            }
+            .user-card .info ul {
+                list-style: none;
+                padding-left: 15px;
+                margin-top: 10px;
+                margin-bottom: -10px;
+            }
+            .user-card .info .error {
+                display: none;
+                color: #ff0000;
+                font-weight: bold;
+            }
+            .user-card.error .info .error {
+                display: inline;
+            }
+            .user-card.error .info .id,
+            .user-card.error .info .name, 
+            .user-card.error .info .email {
+                display: none;
+            }
+            @keyframes blink {
+              25% {
+                content: ". ";
+              }
+              50% {
+                content: ". . ";
+              }
+              100% {
+                content: ". . . ";
+              }
+            }
+        </style>
+    </header>
+    <body>
+        <template id="user-card">
+            <div class="user-card">
+                <div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"></div>
+                <div class="info">
+                    <ul>
+                        <li class="id">ID: <span>Example</span></li>
+                        <li class="login">Login: <span>Example</span></li>
+                        <li class="name">Name: <span>Example</span></li>
+                        <li class="email">Email: <span>Example</span></li>
+                        <li class="error"><span>Example</span></li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+        <main>
+            <div id="result" data-status="loading">
+                Loading
+            </div>
+        </main>
+        <script src="./fetch.js"></script>
+    </body>
+</html>
