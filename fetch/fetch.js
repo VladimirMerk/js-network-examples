@@ -40,9 +40,7 @@
 
   async function getUsers(loginsArray) {
     const baseUrl = new URL('https://api.github.com/users/USERNAME');
-    const loginsPromises = loginsArray.map(login => {
-      return getUser(login);
-    });
+    const loginsPromises = loginsArray.map(login => getUser(login));
     const result = await Promise.all(loginsPromises);
     return result;
   }
