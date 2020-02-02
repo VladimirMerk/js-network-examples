@@ -39,7 +39,6 @@
   }
 
   async function getUsers(loginsArray) {
-    const baseUrl = new URL('https://api.github.com/users/USERNAME');
     const loginsPromises = loginsArray.map(login => getUser(login));
     const result = await Promise.all(loginsPromises);
     return result;
@@ -47,8 +46,9 @@
 
   function getUser(login) {
     return new Promise(resolve => {
-      // const url = new URL(login, baseUrl);
-      const url = login === 'electron' ? 'http://httpstat.us/500' : new URL(login, baseUrl);
+      const baseUrl = new URL('https://api.github.com/users/USERNAME');
+      const url = new URL(login, baseUrl);
+      // const url = login === 'electron' ? 'http://httpstat.us/500' : new URL(login, baseUrl);
       fetch(url)
         .then(response => {
           if (!response.ok) throw new Error(response.statusText)
